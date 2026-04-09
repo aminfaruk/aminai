@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AmiN AI - THE SMARTEST AI ON THE INTERNET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@1,900&amp;family=Be+Vietnam+Pro:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@500;800&amp;family=Comic+Neue:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffbdf3",
+                    "on-background": "#2d2f2f",
+                    "surface-container-highest": "#dbdddd",
+                    "on-surface": "#2d2f2f",
+                    "surface-tint": "#106b00",
+                    "on-primary-container": "#0c5c00",
+                    "tertiary-container": "#a4aaff",
+                    "surface-dim": "#d2d5d5",
+                    "tertiary-fixed": "#a4aaff",
+                    "error-dim": "#b92902",
+                    "secondary-fixed-dim": "#ffa6f3",
+                    "primary-fixed-dim": "#2eef00",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#a400a4",
+                    "on-secondary-fixed": "#620061",
+                    "on-surface-variant": "#5a5c5c",
+                    "on-tertiary": "#d8d8ff",
+                    "surface-variant": "#dbdddd",
+                    "tertiary-fixed-dim": "#939aff",
+                    "error-container": "#f95630",
+                    "on-secondary-fixed-variant": "#920091",
+                    "on-primary-fixed": "#074600",
+                    "tertiary-dim": "#0000e1",
+                    "primary": "#106b00",
+                    "primary-container": "#32ff00",
+                    "surface-container-low": "#f0f1f1",
+                    "surface-bright": "#f6f6f6",
+                    "primary-dim": "#0d5d00",
+                    "on-primary-fixed-variant": "#0f6700",
+                    "on-secondary": "#ffeef8",
+                    "secondary-container": "#ffbdf3",
+                    "inverse-surface": "#0c0f0f",
+                    "error": "#b02500",
+                    "on-tertiary-container": "#0001ac",
+                    "on-primary": "#d3ffc0",
+                    "on-tertiary-fixed": "#000063",
+                    "outline-variant": "#acadad",
+                    "on-error-container": "#520c00",
+                    "primary-fixed": "#32ff00",
+                    "inverse-primary": "#32ff00",
+                    "inverse-on-surface": "#9c9d9d",
+                    "tertiary": "#080cff",
+                    "surface-container-high": "#e1e3e3",
+                    "background": "#f6f6f6",
+                    "secondary-dim": "#900090",
+                    "on-secondary-container": "#820082",
+                    "outline": "#757777",
+                    "on-error": "#ffefec",
+                    "surface": "#f6f6f6",
+                    "surface-container": "#e7e8e8",
+                    "on-tertiary-fixed-variant": "#0001c7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue", "Impact", "sans-serif"],
+                    "body": ["Be Vietnam Pro", "Comic Sans MS", "Comic Neue", "cursive"],
+                    "label": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f6f6f6;
+            background-image: radial-gradient(#dbdddd 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .wordart {
+            text-shadow: 4px 4px 0px #000, 8px 8px 0px #080cff;
+        }
+        .pixel-divider-bg {
+            background-image: linear-gradient(90deg, #106b00 25%, #a400a4 25%, #a400a4 50%, #106b00 50%, #106b00 75%, #a400a4 75%, #a400a4 100%);
+            background-size: 8px 100%;
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .blink {
+            animation: blinker 1s step-start infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+        .msn-titlebar {
+            background: linear-gradient(90deg, #080cff 0%, #a4aaff 100%);
+        }
+        .hard-shadow {
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+        }
+        .inset-border {
+            border: 4px solid;
+            border-color: #757777 #ffffff #ffffff #757777;
+        }
+    </style>
+</head>
+<body class="font-body text-on-background">
+<!-- Top Navigation Anchor (Manual construction based on JSON styles) -->
+<header class="fixed top-0 w-full z-50 bg-slate-300 dark:bg-slate-800 border-b-4 border-slate-400 dark:border-slate-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-6 py-2 flex justify-between items-center">
+<div class="text-3xl font-black italic uppercase tracking-tighter text-[#080cff] dark:text-[#a4aaff] drop-shadow-[2px_2px_0px_rgba(0,0,0,1)] font-headline">
+            AmiN AI
+        </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-[#ffbdf3] dark:text-[#a400a4] underline decoration-4 underline-offset-4 text-sm font-bold uppercase tracking-widest" href="#">Home</a>
+<a class="text-black dark:text-white font-bold hover:bg-[#32ff00] hover:text-black transition-colors px-2" href="#">About</a>
+<a class="text-black dark:text-white font-bold hover:bg-[#32ff00] hover:text-black transition-colors px-2" href="#">Chat</a>
+<a class="text-black dark:text-white font-bold hover:bg-[#32ff00] hover:text-black transition-colors px-2" href="#">Badges</a>
+</nav>
+<button class="bg-primary text-on-primary px-4 py-2 font-black uppercase italic border-2 border-black hard-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+            Sign In
+        </button>
+</header>
+<main class="pt-24 pb-12 px-4 max-w-6xl mx-auto space-y-12">
+<!-- Hero Section -->
+<section class="flex flex-col items-center text-center space-y-6">
+<h1 class="wordart text-7xl md:text-9xl font-headline italic uppercase tracking-tighter text-primary-fixed leading-none">
+                AmiN AI
+            </h1>
+<p class="bg-secondary text-on-secondary px-6 py-2 text-xl font-bold italic hard-shadow -rotate-2">
+                THE SMARTEST AI ON THE INTERNET (probably)
+            </p>
+</section>
+<!-- Marquee -->
+<div class="w-full bg-inverse-surface border-y-4 border-primary py-3 marquee-container">
+<div class="marquee-content text-primary-fixed font-bold text-xl uppercase tracking-widest">
+<span class="blink">⭐</span> NOW ONLINE <span class="blink">⭐</span> ASK ME ANYTHING <span class="blink">⭐</span> I KNOW EVERYTHING <span class="blink">⭐</span> 100% ACCURACY GUARANTEED <span class="blink">⭐</span> BEST OF 2002 AWARD WINNER <span class="blink">⭐</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Left Column: Chat Window -->
+<div class="md:col-span-8">
+<div class="bg-surface-container-highest border-4 border-black hard-shadow flex flex-col h-[600px] rounded-none">
+<!-- Title Bar -->
+<div class="msn-titlebar p-2 flex justify-between items-center border-b-4 border-black">
+<div class="flex items-center gap-2 text-white font-bold">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+<span>AmiN AI Messenger (v2.0.1)</span>
+</div>
+<div class="flex gap-1">
+<div class="w-5 h-5 bg-surface-container-low border-2 border-black flex items-center justify-center text-xs font-bold cursor-pointer">_</div>
+<div class="w-5 h-5 bg-surface-container-low border-2 border-black flex items-center justify-center text-xs font-bold cursor-pointer">□</div>
+<div class="w-5 h-5 bg-error border-2 border-black flex items-center justify-center text-xs font-bold cursor-pointer text-white">X</div>
+</div>
+</div>
+<!-- Message Area -->
+<div class="flex-grow p-4 overflow-y-auto bg-surface-container-lowest inset-border m-2 space-y-4 font-body">
+<!-- AmiN Message -->
+<div class="flex gap-3 items-start max-w-[80%]">
+<div class="w-12 h-12 bg-primary flex-shrink-0 border-2 border-black overflow-hidden">
+<img alt="Robot Avatar" data-alt="Pixel art style robot head with green antenna and glowing eyes on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjeyeZIilSroGX60UxAlEmAj-vZe4vTNKKLCuenH2QvmhTaedX6eudixL2jl200NWqG-8Hto6e3-3v2ZGGI9KfVjVFHpIeDzkL3znDOk6H6axdL1W4Zb6wBBp74S1ZIDkIEaTDrxhUgf3VuTFKhFXiqtl2GvjOHnoAWE7cLU7Q2nym2jexiH1BZ6BDhexwm72PqIGSGiyXT5sNCl1jUl8GZUN31FlN6NuMfUPU5yg7RiNU_EVcU67F18oGAUZ-du5Dcx-Hbm8hoRaj"/>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-bold text-tertiary uppercase tracking-tighter">AmiN AI says:</p>
+<div class="bg-surface-container-high p-3 border-2 border-black relative">
+                                    Hello human! Welcome to my mainframe. Ask me any question and I will use my ultra-powerful 486 processor to find the answer!!
+                                    <div class="absolute -left-2 top-2 w-0 h-0 border-t-8 border-t-transparent border-r-8 border-r-black border-b-8 border-b-transparent"></div>
+</div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex gap-3 items-start justify-end max-w-[80%] ml-auto text-right">
+<div class="space-y-1">
+<p class="text-xs font-bold text-secondary uppercase tracking-tighter">CoolUser_2002 says:</p>
+<div class="bg-secondary-container p-3 border-2 border-black relative">
+                                    Are you a real robot or just a bunch of if-statements?
+                                    <div class="absolute -right-2 top-2 w-0 h-0 border-t-8 border-t-transparent border-l-8 border-l-black border-b-8 border-b-transparent"></div>
+</div>
+</div>
+<div class="w-12 h-12 bg-secondary flex-shrink-0 border-2 border-black overflow-hidden">
+<img alt="User Avatar" data-alt="Pixel art style human head with cool sunglasses and a backwards hat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD68cZw7MO_g5vfoIg4VCygyW6326ZSBACIT114TbJPXVJ5V4QPfDRj0nvGU8_X9fcZaCjBfvGgbvNaGriWAGbqbyqbvcV0dAPmZ0JbELKgAWd_F2v5v_XmNmhZJAkC_0JjuJdG4LVbX21RGbmY0dgV4Oh5oibHb8Ztx8V_lebYrNeUHikHjOF3UV0kiHnNpOtiBzyPf9yNzTANZmIWR7lm8OKQfW-I82ZntK_uOF1nmNRTrAA64LAKWs_rXdbtDnThDmp4hO9XIt97"/>
+</div>
+</div>
+<!-- Thinking State (Target for interaction simulation) -->
+<div class="flex gap-3 items-start max-w-[80%]">
+<div class="w-12 h-12 bg-primary flex-shrink-0 border-2 border-black overflow-hidden">
+<img alt="Robot Avatar" data-alt="Pixel art style robot head with green antenna and glowing eyes on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb0HM39YgJ1h1nD6CWiHGJru_qAdBG_6NvDHb4S1tjcelzwUTqptA24kqr5bvQZytrHHUpYW3xdck7DVD1GzpFQ7dPkTeS1nzaP8k8DMR2COz7iTBPre_1K0CxNFp98jYnucw-o1FPp9uztqidDKw9IGMlSDH2dHZ6TxuN_0gXnuTXtS0TBtj5jgmVS-YtYm04f5-GvX_tEUjYWH4ac3xJDUn1hr8-gYtZ2ddDJiUGZA2Y4cQXju_rlGqSv3N6m-s3ko35kN67YVAw"/>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-bold text-tertiary uppercase tracking-tighter">AmiN AI is thinking...</p>
+<div class="bg-surface-container-high p-3 border-2 border-black italic blink">
+                                    AmiN AI is processing your deep thoughts... please wait...
+                                </div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface-container-high border-t-4 border-black flex gap-2">
+<input class="flex-grow p-3 border-4 border-black focus:outline-none focus:border-secondary font-body" placeholder="Type your message here..." type="text"/>
+<button class="bg-primary text-on-primary px-6 border-4 border-black font-black uppercase italic hard-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+                            SEND!
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats & Profile -->
+<div class="md:col-span-4 space-y-8">
+<!-- Profile Card -->
+<div class="bg-surface-container-lowest border-4 border-black hard-shadow p-6 space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-20 h-20 bg-tertiary border-4 border-black grayscale">
+<img alt="Profile" data-alt="Low-res pixelated robot head with neon green accents on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGc9E7fbolpQuuQsNycV1CXo9Xlyfxt1JXmThhfzmnBInyAlVR9prI5B3U218xabmDk7GWr7YP3T8muOcEl3IOwaIYL2nGbLojUmqUI0cRmtZSxVdSnG2BP97F8bfBpSO5pbzK1l7n9LouZpdz_b3BWE5A5epAdPlagndy5Ftb14im3bJNhNc0C7vWH0kz2blx_uZHoPgixZcdYKRf8UqcXmUIJDYAoSW087bpyk42nPudajijH0AnGUV1NAMz0FNfIymS2xOezg-u"/>
+</div>
+<div>
+<h3 class="font-headline text-2xl uppercase italic text-tertiary leading-none">AmiN AI</h3>
+<p class="text-sm font-bold text-secondary">Current Mood: 💿 Wired</p>
+</div>
+</div>
+<div class="bg-inverse-surface p-2 marquee-container">
+<p class="marquee-content text-primary-fixed text-xs font-mono">CURRENTLY LISTENING TO: Linkin_Park-In_The_End.mp3 (128kbps) ---</p>
+</div>
+</div>
+<!-- Stats Table -->
+<div class="bg-surface-container-lowest border-4 border-black hard-shadow overflow-hidden">
+<div class="bg-secondary p-2 border-b-4 border-black">
+<h3 class="text-white font-headline text-xl uppercase italic">SYSTEM STATS</h3>
+</div>
+<table class="w-full text-left text-sm">
+<tbody><tr class="border-b-2 border-black bg-surface-container-low">
+<th class="p-3 border-r-2 border-black uppercase font-black italic">Power</th>
+<td class="p-3 font-bold text-primary">MAXIMUM!!</td>
+</tr>
+<tr class="border-b-2 border-black">
+<th class="p-3 border-r-2 border-black uppercase font-black italic">IQ Level</th>
+<td class="p-3 font-bold text-secondary">OVER 9000</td>
+</tr>
+<tr class="border-b-2 border-black bg-surface-container-low">
+<th class="p-3 border-r-2 border-black uppercase font-black italic">Uptime</th>
+<td class="p-3 font-bold">99.999%</td>
+</tr>
+<tr>
+<th class="p-3 border-r-2 border-black uppercase font-black italic">Status</th>
+<td class="p-3 text-error font-black italic blink">ULTRA-ONLINE</td>
+</tr>
+</tbody></table>
+</div>
+<!-- Webring & Badges -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-primary-container p-2 border-2 border-black text-center font-bold text-[10px] uppercase">
+                        Member of the COOL BOT WEBRING
+                        <div class="flex justify-between mt-2">
+<span class="cursor-pointer underline">PREV</span>
+<span class="cursor-pointer underline">NEXT</span>
+</div>
+</div>
+<div class="bg-tertiary-container p-2 border-2 border-black text-center flex items-center justify-center font-black italic text-xs uppercase">
+                        Best viewed in 800x600 resolution!
+                    </div>
+</div>
+</div>
+</div>
+<!-- Pixel Divider -->
+<div class="pixel-divider-bg h-4 w-full border-y-2 border-black"></div>
+<!-- SEO/Retro Content -->
+<section class="bg-surface-container-low border-4 border-black p-8 italic space-y-4">
+<h2 class="text-3xl font-headline uppercase text-tertiary">Why AmiN AI?</h2>
+<p class="text-lg">
+                I was created in a basement in late 2001 to provide the world with the most advanced answers to life's biggest questions. Whether you need to know who is the best pop star or how to cheat in Minesweeper, I am the only resource you will ever need. My brain is made of pure silicon and pure genius.
+            </p>
+</section>
+</main>
+<!-- Footer Anchor (Mapped from JSON) -->
+<footer class="bg-[#080cff] dark:bg-[#04067f] border-t-4 border-[#ffbdf3] flex flex-col items-center justify-center p-8 gap-4 w-full">
+<!-- Hit Counter -->
+<div class="bg-black border-2 border-white px-4 py-1 flex items-center gap-2">
+<span class="text-xs text-white uppercase font-mono">Visitor Count:</span>
+<span class="text-xl font-mono text-[#32ff00] tracking-widest font-black">004721</span>
+</div>
+<div class="flex gap-6 font-mono text-xs uppercase tracking-widest text-slate-200">
+<a class="hover:skew-x-6 transition-transform hover:text-white underline" href="#">Webring</a>
+<a class="hover:skew-x-6 transition-transform hover:text-white underline" href="#">Guestbook</a>
+<a class="hover:skew-x-6 transition-transform hover:text-white underline" href="mailto:amin@aminai.co">E-mail Me</a>
+</div>
+<div class="flex flex-col items-center gap-2 text-center">
+<p class="font-mono text-xs uppercase tracking-widest text-[#32ff00]">© 2002 AmiN AI - Best Viewed in IE6 @ 800x600</p>
+<div class="flex gap-2">
+<div class="w-20 h-8 bg-surface-container-highest border border-black flex items-center justify-center grayscale">
+<span class="text-[8px] font-black italic">IE 6 COMPATIBLE</span>
+</div>
+<div class="w-20 h-8 bg-surface-container-highest border border-black flex items-center justify-center grayscale">
+<span class="text-[8px] font-black italic">MADE WITH NOTEPAD</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmiN AI - NOT Artificial Intelligence. Actual Intelligence.</title>
+<meta name="description" content="AmiN AI - Not a chatbot. Just a guy named Amin who answers your questions from his phone. Zero data centres. Zero boiled oceans. 100% human.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@1,900&family=Be+Vietnam+Pro:wght@400;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #106b00;
+  --primary-container: #32ff00;
+  --on-primary: #d3ffc0;
+  --secondary: #a400a4;
+  --secondary-container: #ffbdf3;
+  --on-secondary: #ffeef8;
+  --tertiary: #080cff;
+  --on-tertiary: #d8d8ff;
+  --error: #b02500;
+  --surface-low: #f0f1f1;
+  --surface-high: #e1e3e3;
+  --surface-highest: #dbdddd;
+  --surface-lowest: #ffffff;
+  --inverse-surface: #0c0f0f;
+  --on-surface: #2d2f2f;
+  --outline-variant: #acadad;
+}
+
+html, body {
+  font-family: 'Be Vietnam Pro', 'Comic Sans MS', 'Comic Neue', cursive;
+  color: var(--on-surface);
+  background: #c0c0c0;
+  background-image: radial-gradient(#a0a0a0 1px, transparent 1px);
+  background-size: 20px 20px;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.marquee-track { overflow: hidden; white-space: nowrap; }
+.marquee-content {
+  display: inline-block;
+  animation: scroll-marquee 22s linear infinite;
+}
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.trail-star {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  font-size: 14px;
+  animation: trail-fade 0.6s ease-out forwards;
+}
+@keyframes trail-fade {
+  0% { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0.3) translateY(12px); }
+}
+
+@keyframes float1 {
+  0%, 100% { transform: var(--rot) translateY(0); }
+  50% { transform: var(--rot) translateY(-6px); }
+}
+@keyframes float2 {
+  0%, 100% { transform: var(--rot) translateY(0); }
+  50% { transform: var(--rot) translateY(-8px); }
+}
+@keyframes wobble {
+  0%, 100% { transform: rotate(4deg); }
+  50% { transform: rotate(-4deg); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ============================================================
+   SHELL
+   ============================================================ */
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Header */
+.site-header {
+  background: #808080;
+  border-bottom: 3px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px 16px;
+  flex-shrink: 0;
+}
+.header-logo {
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  color: var(--primary-container);
+  text-shadow: 2px 2px 0px #111, 4px 4px 0px var(--tertiary);
+  line-height: 1;
+}
+.header-tagline {
+  display: inline-block;
+  background: var(--secondary);
+  color: var(--on-secondary);
+  padding: 3px 10px;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 10px;
+  border: 2px solid #222;
+  box-shadow: 2px 2px 0px 0px #222;
+  transform: rotate(-1.5deg);
+}
+.status-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #d0ffc0;
+  border: 2px solid var(--primary);
+  padding: 2px 8px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+}
+.status-dot {
+  width: 6px; height: 6px;
+  background: var(--primary-container);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Marquee */
+.site-marquee {
+  background: var(--primary);
+  padding: 2px 0;
+  flex-shrink: 0;
+}
+.site-marquee .marquee-content {
+  color: #111;
+  font-weight: 900;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* ============================================================
+   THREE-COLUMN LAYOUT
+   ============================================================ */
+.three-col {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+/* Sidebars: normal flow, flex-column, stretch to fill */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6px;
+  gap: 6px;
+}
+
+/* Chaos blocks: normal flow, not absolute. Rotations via transform. */
+.chaos {
+  border: 3px solid #222;
+  box-shadow: 4px 4px 0px 0px #222;
+}
+
+/* ============================================================
+   LEFT SIDEBAR
+   ============================================================ */
+.chaos-water {
+  background: var(--inverse-surface);
+  border-color: var(--error);
+  padding: 16px;
+  --rot: rotate(-2deg);
+  transform: rotate(-2deg);
+  animation: float1 4s ease-in-out infinite;
+  margin: -4px -2px 0 -4px;
+}
+.chaos-water h3 {
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--primary-container);
+  margin-bottom: 6px;
+}
+.chaos-water p {
+  color: #ccc;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.chaos-table {
+  background: var(--surface-lowest);
+  --rot: rotate(1.5deg);
+  transform: rotate(1.5deg);
+  margin: 0 -6px 0 -2px;
+}
+.chaos-table-header {
+  background: var(--primary);
+  padding: 6px 10px;
+  border-bottom: 2px solid #222;
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--on-primary);
+}
+.compare-mini { width: 100%; border-collapse: collapse; font-size: 12px; }
+.compare-mini th {
+  padding: 5px 6px;
+  border-bottom: 2px solid #222;
+  text-align: left;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 10px;
+  background: var(--surface-high);
+}
+.compare-mini th:first-child { border-right: 1px solid #222; width: 30%; }
+.compare-mini th:nth-child(2) { border-right: 1px solid #222; color: var(--error); }
+.compare-mini th:nth-child(3) { color: var(--primary); }
+.compare-mini td { padding: 4px 6px; border-bottom: 1px solid var(--outline-variant); }
+.compare-mini td:first-child { border-right: 1px solid #222; font-weight: 700; font-style: italic; }
+.compare-mini td:nth-child(2) { border-right: 1px solid #222; }
+.compare-mini tr:nth-child(odd) td { background: var(--surface-low); }
+
+.chaos-construction {
+  padding: 10px;
+  background: repeating-linear-gradient(45deg, #111 0px, #111 8px, #FFD700 8px, #FFD700 16px);
+  text-align: center;
+  transform: rotate(-3deg);
+  margin: 0 -4px 0 -6px;
+  border-color: #FFD700;
+}
+.chaos-construction span {
+  background: #111;
+  color: #FFD700;
+  padding: 4px 12px;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-family: 'Epilogue', Impact, sans-serif;
+}
+
+.chaos-counter {
+  background: #111;
+  border-color: var(--primary-container);
+  padding: 8px 12px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transform: rotate(2deg);
+  margin: 0 -2px -4px -4px;
+}
+.chaos-counter .label { color: #fff; font-family: monospace; font-size: 10px; text-transform: uppercase; }
+.chaos-counter .count { color: var(--primary-container); font-family: monospace; font-size: 20px; font-weight: 900; letter-spacing: 3px; }
+
+.water-stat {
+  display: inline-block;
+  background: var(--error);
+  color: #fff;
+  padding: 1px 5px;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+/* Human AI ascii art block */
+.chaos-humanai {
+  background: #111;
+  padding: 14px 10px;
+  text-align: center;
+  transform: rotate(-1.5deg);
+  margin: 0 -4px 0 -2px;
+  border-color: var(--primary-container);
+}
+.humanai-art {
+  font-family: monospace;
+  font-size: 9px;
+  line-height: 1.3;
+  color: var(--primary-container);
+  white-space: pre;
+  letter-spacing: 1px;
+}
+.humanai-label {
+  margin-top: 8px;
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--primary-container);
+  letter-spacing: 2px;
+}
+.humanai-sub {
+  font-size: 8px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* Certified human stamp */
+.chaos-stamp {
+  background: var(--surface-lowest);
+  padding: 16px 10px;
+  text-align: center;
+  transform: rotate(3deg);
+  margin: 0 -6px 0 -2px;
+  border-color: var(--primary);
+  position: relative;
+}
+.stamp-ring {
+  width: 100px;
+  height: 100px;
+  border: 4px solid var(--primary);
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.stamp-ring::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 2px dashed var(--primary);
+  border-radius: 50%;
+}
+.stamp-top {
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 9px;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 2px;
+}
+.stamp-big {
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: var(--primary);
+  line-height: 1;
+}
+.stamp-bottom {
+  font-family: monospace;
+  font-size: 7px;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+.stamp-date {
+  margin-top: 6px;
+  font-family: monospace;
+  font-size: 9px;
+  color: #888;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   RIGHT SIDEBAR
+   ============================================================ */
+.chaos-why {
+  background: var(--surface-low);
+  padding: 16px;
+  --rot: rotate(2deg);
+  transform: rotate(2deg);
+  animation: float2 4.5s ease-in-out infinite;
+  margin: -4px -4px 0 -2px;
+}
+.chaos-why h3 {
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  margin-bottom: 6px;
+}
+.chaos-why p {
+  font-size: 11px;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+.chaos-why ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  line-height: 2;
+}
+.chaos-why ul li::before { content: '>> '; color: var(--primary); font-weight: 900; }
+
+.chaos-guestbook {
+  background: var(--surface-lowest);
+  --rot: rotate(-2.5deg);
+  transform: rotate(-2.5deg);
+  animation: float1 5.5s ease-in-out infinite;
+  margin: 0 -2px 0 -6px;
+}
+.chaos-gb-header {
+  background: var(--secondary);
+  padding: 6px 10px;
+  border-bottom: 2px solid #222;
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--on-secondary);
+}
+.chaos-gb-body {
+  padding: 12px;
+}
+.gb-entry {
+  border-bottom: 1px dashed #999;
+  padding: 6px 0;
+  font-size: 11px;
+  line-height: 1.5;
+  font-style: italic;
+}
+.gb-entry:last-child { border-bottom: none; }
+.gb-name { color: var(--primary); font-weight: 700; font-style: normal; }
+.gb-date { color: #999; font-size: 9px; }
+
+.chaos-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  transform: rotate(4deg);
+  animation: wobble 3s ease-in-out infinite;
+  border: none;
+  box-shadow: none;
+  margin: 0 -4px;
+}
+.chaos-badges .badge {
+  background: var(--surface-highest);
+  border: 2px solid #222;
+  padding: 4px 8px;
+  font-size: 9px;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 #222;
+}
+
+.chaos-email {
+  background: #111;
+  padding: 8px 12px;
+  font-family: monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transform: rotate(-2deg);
+  border-color: var(--primary);
+  text-align: center;
+  margin: 0 -2px -4px -4px;
+}
+.chaos-email a { color: var(--primary-container); text-decoration: underline; }
+.chaos-email span { color: #888; }
+
+/* ============================================================
+   CENTER COLUMN: Chat
+   ============================================================ */
+.center-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chat-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  min-height: 0;
+}
+
+.chat-header {
+  text-align: center;
+  padding: 10px 0 6px;
+  flex-shrink: 0;
+}
+.chat-header-title {
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.chat-header-sub {
+  font-size: 10px;
+  color: #666;
+  margin-top: 1px;
+}
+
+.chat-welcome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  gap: 10px;
+  min-height: 0;
+}
+.chat-welcome.hidden { display: none; }
+.welcome-desc {
+  color: #444;
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: 420px;
+}
+.welcome-desc strong { color: var(--primary); }
+
+.welcome-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  max-width: 420px;
+}
+.welcome-chip {
+  background: #d4d4d4;
+  border: 2px solid #999;
+  color: #333;
+  padding: 6px 10px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Be Vietnam Pro', 'Comic Sans MS', cursive;
+}
+.welcome-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #e8ffe0;
+}
+.welcome-chip:active {
+  transform: scale(0.97);
+}
+
+.welcome-water {
+  display: flex; align-items: center; gap: 6px;
+  color: #555;
+  font-size: 10px;
+}
+.welcome-water span {
+  background: var(--error);
+  color: #fff;
+  padding: 1px 6px;
+  font-weight: 700;
+  font-size: 9px;
+}
+
+/* Messages */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 0;
+  min-height: 0;
+}
+.chat-messages.active { display: flex; }
+.chat-messages::-webkit-scrollbar { width: 10px; }
+.chat-messages::-webkit-scrollbar-track { background: #b0b0b0; }
+.chat-messages::-webkit-scrollbar-thumb { background: #888; border: 2px solid #666; }
+
+.msg { display: flex; gap: 8px; align-items: flex-start; max-width: 100%; animation: msg-in 0.3s ease-out; }
+@keyframes msg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.msg.user { flex-direction: row-reverse; }
+
+.msg-avatar {
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+  border: 2px solid #666;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.msg-avatar.bot { background: var(--primary); border-color: #222; }
+.msg-avatar.human { background: var(--secondary); border-color: #222; }
+
+.msg-body { min-width: 0; max-width: 85%; }
+.msg-name {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+.msg-name.bot-name { color: var(--primary); }
+.msg-name.user-name { color: var(--secondary); text-align: right; }
+
+.msg-bubble {
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 2px solid #999;
+}
+.msg .msg-bubble { background: #d9d9d9; color: #222; }
+.msg.user .msg-bubble { background: var(--secondary-container); color: #333; border-color: var(--secondary); }
+
+.msg-pending {
+  background: #f5f0d0 !important;
+  border-style: dashed !important;
+  border-color: #c8a800 !important;
+  color: #555 !important;
+}
+.pending-label {
+  display: inline-block;
+  background: #FFD700;
+  color: #111;
+  font-size: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  margin-top: 4px;
+  letter-spacing: 1px;
+  border: 1px solid #c8a800;
+}
+
+/* Input area */
+.chat-input-area {
+  flex-shrink: 0;
+  padding: 8px 0 12px;
+}
+.chat-input-wrap {
+  display: flex;
+  gap: 0;
+  background: #fff;
+  border: 3px solid #888;
+  transition: border-color 0.2s;
+}
+.chat-input-wrap:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(50,255,0,0.2); }
+
+.chat-input {
+  flex: 1;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  font-family: 'Be Vietnam Pro', 'Comic Sans MS', cursive;
+  font-size: 13px;
+  color: #222;
+  outline: none;
+}
+.chat-input::placeholder { color: #999; }
+
+.chat-send {
+  background: var(--primary);
+  color: var(--on-primary);
+  border: none;
+  border-left: 3px solid rgba(0,0,0,0.3);
+  padding: 10px 18px;
+  font-family: 'Epilogue', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 1px;
+}
+.chat-send:hover { background: var(--primary-container); color: #111; }
+.chat-send:active { transform: scale(0.97); }
+
+.chat-disclaimer {
+  text-align: center;
+  font-size: 8px;
+  color: #666;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+.chat-disclaimer strong { color: var(--primary); }
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .center-col { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- Header -->
+  <div class="site-header">
+    <div class="header-logo">AmiN AI</div>
+    <div class="header-tagline">Not Artificial Intelligence. Actual Intelligence.</div>
+    <div class="status-pill">
+      <div class="status-dot"></div>
+      Human Online
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="site-marquee marquee-track">
+    <div class="marquee-content">
+      &nbsp; 100% HUMAN-POWERED &nbsp; * &nbsp; NO GPUS HARMED &nbsp; * &nbsp; ZERO WATER WASTED &nbsp; * &nbsp; RESPONSE TIME: WHENEVER AMIN CHECKS HIS PHONE &nbsp; * &nbsp; ACCURACY: HONEST AT LEAST &nbsp; * &nbsp; 100% HUMAN-POWERED &nbsp; * &nbsp; NO GPUS HARMED &nbsp; * &nbsp; ZERO WATER WASTED &nbsp; * &nbsp; RESPONSE TIME: WHENEVER AMIN CHECKS HIS PHONE &nbsp; * &nbsp; ACCURACY: HONEST AT LEAST &nbsp;
+    </div>
+  </div>
+
+  <!-- Three columns -->
+  <div class="three-col">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+      <div class="chaos chaos-water">
+        <h3>The Water Thing Is Real</h3>
+        <p>ChatGPT uses <span class="water-stat">~500ml of water</span> per chat for cooling. An entire bottle. For one conversation about lunch.</p>
+        <p style="margin-top:4px;">AmiN AI: <span class="water-stat">0ml</span>. Amin drinks coffee but that's HIS coffee.</p>
+      </div>
+
+      <div class="chaos chaos-table">
+        <div class="chaos-table-header">AI vs Amin</div>
+        <table class="compare-mini">
+          <tr><th></th><th>ChatGPT</th><th>Amin</th></tr>
+          <tr><td>Water</td><td>~500ml</td><td>0ml</td></tr>
+          <tr><td>Power</td><td>Data centre</td><td>Phone</td></tr>
+          <tr><td>Lies</td><td>Confident</td><td>"idk"</td></tr>
+          <tr><td>Speed</td><td>2 sec</td><td>When free</td></tr>
+          <tr><td>Your data</td><td>Probably</td><td>Nope</td></tr>
+          <tr><td>Your job</td><td>Wants it</td><td>Has his own</td></tr>
+          <tr><td>Carbon</td><td>Massive</td><td>Walking</td></tr>
+        </table>
+      </div>
+
+      <div class="chaos chaos-humanai">
+        <div class="humanai-art">  O
+ /|\
+ / \
+[___]</div>
+        <div class="humanai-label">Human AI</div>
+        <div class="humanai-sub">No GPUs were harmed</div>
+      </div>
+
+      <div class="chaos chaos-construction">
+        <span>BEST VIEWED 800x600</span>
+      </div>
+
+      <div class="chaos chaos-counter">
+        <span class="label">Visitors:</span>
+        <span class="count" id="hitCount">004721</span>
+      </div>
+    </div>
+
+    <!-- CENTER: Chat -->
+    <div class="center-col">
+      <div class="chat-section">
+        <div class="chat-header">
+          <div class="chat-header-title">Ask Amin Anything</div>
+          <div class="chat-header-sub">Messages go straight to his phone. He replies when he can.</div>
+        </div>
+
+        <div class="chat-welcome" id="chatWelcome">
+          <p class="welcome-desc">
+            There is no algorithm here. Just a bloke named <strong>Amin</strong> who reads your messages and replies from his phone. No neural networks. No transformers. No boiling oceans. Just one human doing his best.
+          </p>
+          <div class="welcome-chips">
+            <div class="welcome-chip" onclick="fillAndSend(this)">What makes you better than ChatGPT?</div>
+            <div class="welcome-chip" onclick="fillAndSend(this)">How much water does AI actually waste?</div>
+            <div class="welcome-chip" onclick="fillAndSend(this)">Are you actually a real person?</div>
+            <div class="welcome-chip" onclick="fillAndSend(this)">What is the meaning of life?</div>
+          </div>
+          <div class="welcome-water">
+            ChatGPT uses <span>~500ml of water</span> per conversation. AmiN AI uses zero.
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages"></div>
+
+        <div class="chat-input-area">
+          <div class="chat-input-wrap">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Ask Amin anything..." onkeydown="if(event.key==='Enter')sendMessage()">
+            <button class="chat-send" onclick="sendMessage()">ASK</button>
+          </div>
+          <div class="chat-disclaimer">
+            <strong>0ml of water</strong> will be used. Amin runs on coffee, not cooling systems.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="sidebar">
+      <div class="chaos chaos-why">
+        <h3>Why AmiN AI?</h3>
+        <p>Because the planet is on fire and we're using it to generate cats in business suits.</p>
+        <ul>
+          <li>No servers boiling oceans</li>
+          <li>No "as a language model"</li>
+          <li>No scraping the internet</li>
+          <li>Actual opinions. Actual human.</li>
+          <li>Will admit when he doesn't know</li>
+          <li>Never said "I hope that helps!"</li>
+        </ul>
+      </div>
+
+      <div class="chaos chaos-guestbook">
+        <div class="chaos-gb-header">Guestbook</div>
+        <div class="chaos-gb-body">
+          <div class="gb-entry"><span class="gb-name">xX_DarkWolf_Xx</span> - "way better than geocities" <span class="gb-date">03/14/02</span></div>
+          <div class="gb-entry"><span class="gb-name">SoccerMom42</span> - "he answered my lasagna question!!" <span class="gb-date">05/22/02</span></div>
+          <div class="gb-entry"><span class="gb-name">~*AngelBaby*~</span> - "a REAL human?? internet saved" <span class="gb-date">08/09/02</span></div>
+          <div class="gb-entry"><span class="gb-name">hackerman2k</span> - "tested it. legit." <span class="gb-date">11/30/02</span></div>
+        </div>
+      </div>
+
+      <div class="chaos chaos-stamp">
+        <div class="stamp-ring">
+          <div class="stamp-top">Certified</div>
+          <div class="stamp-big">Human</div>
+          <div class="stamp-bottom">No AI Inside</div>
+        </div>
+        <div class="stamp-date">Issued: 03/14/2002</div>
+      </div>
+
+      <div class="chaos chaos-badges">
+        <div class="badge">No AI Inside</div>
+        <div class="badge">Made with Notepad</div>
+        <div class="badge">Human Certified</div>
+        <div class="badge">IE6 Approved</div>
+      </div>
+
+      <div class="chaos chaos-email">
+        <span>&copy; 2002</span> <a href="mailto:amin@aminai.co">E-mail Amin</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Session ID - persists per browser tab
+var SESSION_ID = sessionStorage.getItem('aminai_session');
+if (!SESSION_ID) {
+  SESSION_ID = 'sess_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+  sessionStorage.setItem('aminai_session', SESSION_ID);
+}
+
+var lastPollTs = Date.now();
+var pollInterval = null;
+var pendingMsgEl = null;
+
+async function sendMessage() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+
+  document.getElementById('chatWelcome').classList.add('hidden');
+  var messages = document.getElementById('chatMessages');
+  messages.classList.add('active');
+
+  // Show user message
+  var userMsg = document.createElement('div');
+  userMsg.className = 'msg user';
+  userMsg.innerHTML =
+    '<div class="msg-avatar human">\u{1F60E}</div>' +
+    '<div class="msg-body">' +
+      '<div class="msg-name user-name">You</div>' +
+      '<div class="msg-bubble">' + escapeHtml(text) + '</div>' +
+    '</div>';
+  messages.appendChild(userMsg);
+
+  // Show pending state
+  pendingMsgEl = document.createElement('div');
+  pendingMsgEl.className = 'msg';
+  pendingMsgEl.innerHTML =
+    '<div class="msg-avatar bot">\u{1F4F1}</div>' +
+    '<div class="msg-body">' +
+      '<div class="msg-name bot-name">Amin has been notified...</div>' +
+      '<div class="msg-bubble msg-pending">' +
+        'Sent to Amin\'s phone. He will reply when he sees it.' +
+        '<div class="pending-label">\u23F3 Awaiting human</div>' +
+      '</div>' +
+    '</div>';
+  messages.appendChild(pendingMsgEl);
+  messages.scrollTop = messages.scrollHeight;
+
+  // Send to backend -> Telegram
+  try {
+    var res = await fetch('/.netlify/functions/send-message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId: SESSION_ID, text: text }),
+    });
+    var data = await res.json();
+    if (!data.success) {
+      showError('Failed to send. Try again.');
+      return;
+    }
+  } catch (err) {
+    showError('Failed to send. Try again.');
+    return;
+  }
+
+  // Start polling for Amin's reply
+  lastPollTs = Date.now();
+  startPolling();
+}
+
+function startPolling() {
+  if (pollInterval) return;
+  pollInterval = setInterval(pollForReply, 3000);
+}
+
+async function pollForReply() {
+  try {
+    var res = await fetch('/.netlify/functions/get-reply?session=' + SESSION_ID + '&since=' + lastPollTs);
+    var data = await res.json();
+    if (data.replies && data.replies.length > 0) {
+      var messages = document.getElementById('chatMessages');
+
+      // Remove pending indicator
+      if (pendingMsgEl && pendingMsgEl.parentNode) {
+        pendingMsgEl.parentNode.removeChild(pendingMsgEl);
+        pendingMsgEl = null;
+      }
+
+      data.replies.forEach(function(reply) {
+        var replyEl = document.createElement('div');
+        replyEl.className = 'msg';
+        replyEl.innerHTML =
+          '<div class="msg-avatar bot">\u{270B}</div>' +
+          '<div class="msg-body">' +
+            '<div class="msg-name bot-name">Amin (from his phone)</div>' +
+            '<div class="msg-bubble">' + escapeHtml(reply.text) + '</div>' +
+          '</div>';
+        messages.appendChild(replyEl);
+        lastPollTs = reply.ts;
+      });
+
+      messages.scrollTop = messages.scrollHeight;
+      // Keep polling in case more replies come
+    }
+  } catch {}
+}
+
+function showError(msg) {
+  if (pendingMsgEl && pendingMsgEl.parentNode) {
+    pendingMsgEl.parentNode.removeChild(pendingMsgEl);
+    pendingMsgEl = null;
+  }
+  var messages = document.getElementById('chatMessages');
+  var errEl = document.createElement('div');
+  errEl.className = 'msg';
+  errEl.innerHTML =
+    '<div class="msg-avatar bot">\u{1F4F1}</div>' +
+    '<div class="msg-body">' +
+      '<div class="msg-name bot-name">System</div>' +
+      '<div class="msg-bubble" style="border-color:var(--error);color:var(--error);">' + escapeHtml(msg) + '</div>' +
+    '</div>';
+  messages.appendChild(errEl);
+}
+
+function fillAndSend(chip) {
+  document.getElementById('chatInput').value = chip.textContent;
+  sendMessage();
+}
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+(function() {
+  var el = document.getElementById('hitCount');
+  var count = parseInt(el.textContent);
+  count += Math.floor(Math.random() * 3) + 1;
+  el.textContent = String(count).padStart(6, '0');
+})();
+
+var lastTrail = 0;
+document.addEventListener('mousemove', function(e) {
+  var now = Date.now();
+  if (now - lastTrail < 60) return;
+  lastTrail = now;
+  var star = document.createElement('div');
+  star.className = 'trail-star';
+  star.textContent = ['*', '+', '.'][Math.floor(Math.random() * 3)];
+  star.style.left = e.clientX + 'px';
+  star.style.top = e.clientY + 'px';
+  star.style.color = ['#32ff00', '#a400a4', '#080cff', '#FFD700'][Math.floor(Math.random() * 4)];
+  document.body.appendChild(star);
+  setTimeout(function() { star.remove(); }, 600);
+});
+</script>
+</body>
+</html>
