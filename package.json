@@ -11,6 +11,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@netlify/blobs": "^10.7.4"
+    "@upstash/redis": "^1.37.0"
   }
 }

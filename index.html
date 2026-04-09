@@ -914,7 +914,7 @@ async function sendMessage() {
 
   // Send to backend -> Telegram
   try {
-    var res = await fetch('/.netlify/functions/send-message', {
+    var res = await fetch('/api/send-message', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessionId: SESSION_ID, text: text }),
@@ -941,7 +941,7 @@ function startPolling() {
 
 async function pollForReply() {
   try {
-    var res = await fetch('/.netlify/functions/get-reply?session=' + SESSION_ID + '&since=' + lastPollTs);
+    var res = await fetch('/api/get-reply?session=' + SESSION_ID + '&since=' + lastPollTs);
     var data = await res.json();
     if (data.replies && data.replies.length > 0) {
       var messages = document.getElementById('chatMessages');
